@@ -17,7 +17,7 @@ class EnvEditorServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/env-editor.php' => config_path('laravel-env-editor.php'),
+                __DIR__ . '/../config/env-editor.php' => config_path('env-editor.php'),
             ], 'config');
 
             // Publishing the views.
