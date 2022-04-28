@@ -1,0 +1,50 @@
+{
+    "name": "kineticamobile/laravel-env-editor",
+    "description": "Laravel env editor",
+    "keywords": [
+        "kineticamobile",
+        "laravel-env-editor"
+    ],
+    "homepage": "https://github.com/kineticamobile/laravel-env-editor",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Daniel Macías Ramos",
+            "email": "danielmaciasramos@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "jackiedo/dotenv-editor": "^2.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kineticamobile\\EnvEditor\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kineticamobile\\EnvEditor\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kineticamobile\\EnvEditor\\EnvEditorServiceProvider"
+            ]
+        }
+    }
+}
