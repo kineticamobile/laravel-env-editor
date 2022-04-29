@@ -15,6 +15,9 @@ return [
 
     'update_route' => 'update_env',
 
+    'restore_route' => 'restore_backup',
+
+
     /*
     |--------------------------------------------------------------------------
     | Middleware to use

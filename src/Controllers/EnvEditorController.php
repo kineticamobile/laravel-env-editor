@@ -22,8 +22,8 @@ class EnvEditorController extends Controller
     public function show_env()
     {
         $keys = DotenvEditor::getKeys();
-
-        return view('env-editor::form', compact('keys'));
+        $backups = DotenvEditor::getBackups();
+        return view('env-editor::form', compact('keys','backups'));
     }
 
     public function update_env(Request $request)
@@ -42,7 +42,12 @@ class EnvEditorController extends Controller
         }
         return redirect()->route('env-editor.show_env');
     }
+    public function restore_backup(Request $request)
+    {   
+        $editor = DotenvEditor::restore($request->backup);
 
+        return redirect()->route('env-editor.show_env');
+    }
     private function delete_old_backups()
     {
         $backups = DotenvEditor::getBackups();
