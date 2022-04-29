@@ -63,6 +63,16 @@ return [
     | Number of max backups that are stored
     |
     */
-    'max_backups' => 3
+    'max_backups' => 3,
+
+     /*
+    |--------------------------------------------------------------------------
+    | Enable backups restore
+    |--------------------------------------------------------------------------
+    |
+    | Number of max backups that are stored
+    |
+    */
+    'enable_backups' => env('ENV_EDITOR_BACKUPS', false)
 
 ];

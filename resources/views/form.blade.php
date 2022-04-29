@@ -70,7 +70,7 @@
             </div>
         </div>
     </form>
-
+    @if (config('env-editor.enable_backups'))
     <div class="row">
         <form method="POST" action="{{ route('env-editor.restore_backup') }}">
             @csrf
@@ -102,6 +102,8 @@
         </form>
 
     </div>
+    @endif
+   
 
 
 
