@@ -21,7 +21,13 @@
                     @if (!in_array($name,$printed) && !in_array($key,config('env-editor.exclude')))
                     <button class="nav-link {{$loop->first?'active':''}} text-end" id="v-pills-{{$name}}-tab"
                         data-bs-toggle="pill" data-bs-target="#v-pills-{{$name}}" type="button" role="tab"
-                        aria-controls="v-pills-{{$name}}" aria-selected="true">{{$name}}</button>
+                        aria-controls="v-pills-{{$name}}" aria-selected="true">
+                        @if (Lang::has($key))
+                                {{__($key)}}
+                        @else
+                            {{$name}}
+                        @endif
+                    </button>
 
 
 
@@ -42,16 +48,28 @@
                         $name=explode('_',$key)[0];
                         @endphp
                         @if ($name==$tab )
-                        @if (!in_array($key,config('env-editor.exclude')))
-                        <div class="mb-3">
-                            <label for="{{$key}}" class="form-label">{{$key}}</label>
-                            <input type="text" class="form-control" id="{{$key}}" name="{{$key}}"
-                                value="{{$item['value']}}">
-                        </div>
+                            @if (!in_array($key,config('env-editor.exclude')))
+                            <div class="mb-3">
+                                <label for="{{$key}}" class="form-label">
+                                    @if (Lang::has($key))
+                                        {{__($key)}}
+                                    @else
+                                     {{$key}}
+                                    @endif
 
-                        @else
-                        <input type="hidden" class="form-control" name="{{$key}}" value="{{$item['value']}}">
-                        @endif
+                                </label>
+                                <input type="text" class="form-control" id="{{$key}}" name="{{$key}}"
+                                    value="{{$item['value']}}">
+                            </div>
+                            @if (Lang::has($key.'_help'))
+                                <div id="{{$name}}HelpBlock" class="form-text">
+                                    {{__($key.'_help')}}
+                                </div>
+                            @endif
+
+                            @else
+                            <input type="hidden" class="form-control" name="{{$key}}" value="{{$item['value']}}">
+                            @endif
                         @endif
                         @endforeach
                     </div>
@@ -103,7 +121,7 @@
 
     </div>
     @endif
-   
+
 
 
 

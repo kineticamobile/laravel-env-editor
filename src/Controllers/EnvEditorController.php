@@ -36,9 +36,12 @@ class EnvEditorController extends Controller
             }
         }
         if ($editor->hasChanged()) {
-
+            if(!file_exists(storage_path('dotenv-editor/.gitignore'))) {
+                file_put_contents(storage_path('dotenv-editor/.gitignore'), "*\n!.gitignore");
+            }
             $editor->backup()->save();
             $this->delete_old_backups();
+            
         }
         return redirect()->route('env-editor.show_env');
     }
